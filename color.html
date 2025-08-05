@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .container{
+            width:60vh;
+         display:flex;
+         margin:20px;
+         justify-content:center;
+         gap:10px;
+         align-items: center;
+         border:1px solid grey;
+         border-radius:15px;
+         
+        }
+        .box{
+            height:180px;
+            width:180px;
+            border:1px solid grey;
+            padding:5px;
+            margin:5px;
+        }
+        .btn{ margin:10px;
+        padding:10px;
+        border-radius:10px;
+        border:none;
+        background-color:#ea940c;
+        color:white;
+        font-weight: 700;
+        }
+        h1{
+            padding:10px;
+        }
+       
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Random color changer</h1>
+    <div class="box">
+    </div>
+    <button id="show" class="btn">Show</button>
+    <button id="stop" class="btn">Stop</button>
+    </div>
+</body>
+<script>
+    const box=document.querySelector(".box")
+    const show=document.getElementById("show")
+    const stop=document.getElementById("stop")
+  
+    const randomcolor=()=>{
+          const hex="0123456789ABCDEF"
+          let color="#"
+        for(i=0;i<6;i++){
+            color +=hex[Math.floor(Math.random() * 16)];
+        }
+        return color;
+        
+    }
+    let interval
+    const changecolor= ()=>{
+        box.style.backgroundColor= randomcolor()}
+
+    show.addEventListener("click",()=>{
+        if(!interval){
+        interval= setInterval(changecolor,1000)
+       }
+        
+    })
+    stop.addEventListener("click",()=>{
+        clearInterval(interval)
+        interval=null
+    })
+</script>
+</html>
